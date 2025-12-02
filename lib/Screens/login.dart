@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Config {
-  static const String apiBaseUrl = 'https://test.erpkey.in';
+  static const String apiBaseUrl = 'http://172.20.10.2:8001';
 }
 
 class LoginPage extends StatefulWidget {
@@ -64,10 +64,16 @@ class _LoginPageState extends State<LoginPage> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         print("🌐 Login Response Body: $data");
-        final String? apiSecret = data['key_details']?['api_secret']
-            ?.toString();
-        final String? apiKey = data['key_details']?['api_key']?.toString();
-        final String? fullName = data['full_name']?.toString();
+        final message = data['message'];
+
+        final keyDetails = message?['key_details'];
+
+        final String? apiKey = keyDetails?['api_key']?.toString();
+        final String? apiSecret = keyDetails?['api_secret']?.toString();
+        final String? fullName = message?['full_name']?.toString();
+
+        print("🔑 Extracted - api_key: $apiKey, api_secret: $apiSecret, full_name: $fullName");
+
 
         print(
             "🔑 Extracted - api_key: $apiKey, api_secret: $apiSecret, full_name: $fullName");
@@ -246,14 +252,6 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   const SizedBox(height: 40),
-
-                  // Footer
-                  const Text(
-                    'Powered by Sanpra Software Solution',
-                    style: TextStyle(color: Colors.white70,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
-                  ),
                 ],
               ),
             ),

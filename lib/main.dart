@@ -7,7 +7,7 @@ import 'package:location_tracker/Screens/login.dart';
 
 // Config class for consistent API URL
 class Config {
-  static const String apiBaseUrl = 'https://test.erpkey.in';
+  static const String apiBaseUrl = 'http://172.20.10.2:8001';
 }
 
 void main() {

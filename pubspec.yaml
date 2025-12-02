@@ -26,3 +26,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   # Removed assets section if cow-logo.jpg is missing
+
+flutter_icons:
+  android: true
+#  ios: true
+  image_path: "assets/1365700.png"

@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
     <application
-        android:label="location_tracker"
+        android:label="Location Tracker"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
